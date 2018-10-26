@@ -84,12 +84,32 @@ public SuperArray() {
   data = betterData;
   }
 
+  // PHASE 2 COMPLETE.
+  // PHASE 3.
 
+  public boolean contains(String target) {
+    for (int i = 0; i < size; i++) {
+      if (data[i].equals(target))
+      return true;
+    }
+    return false;
+  }
 
+  public int indexOf(String target) {
+    for (int i = 0; i < size; i++) {
+      if (data[i].equals(target))
+      return i;
+    }
+    return -1;
+  }
 
-
-
-
+  public int lastIndexOf(String target) {
+    for (int i = size -1; i >= 0; i--) {
+      if (data[i].equals(target))
+      return i;
+    }
+    return -1;
+  }
 
 
 }
