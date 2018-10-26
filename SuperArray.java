@@ -110,6 +110,50 @@ public SuperArray() {
     }
     return -1;
   }
+  public void add(int index, String element) {
+    if (index < 0 || index > size())
+    System.out.println("out of bound.");
+    else {
+      if (data.length <= size)
+      resize();
+      String[] betterData = new String[data.length];
+      for (int i = 0; i < index; i++) {
+        betterData[i] = data[i];
+      }
+      betterData[index] = element;
+      size++;
+      for (int i = index; i < size + 1; i++) {
+        betterData[i + 1] = data[i];
+      }
+      betterData = data;
+    }
+  }
 
+  public String remove(int index) {
+    String result = data[index];
+    if (index < 0 || index > size())
+    System.out.println("out of bound.");
+    else
+    {
+      String[] betterData = new String[data.length];
+      for (int i = 0; i < index; i++) {
+        betterData[i] = data[i];
+      }
+      size--;
+      for (int i = index; i < size; i++) {
+        betterData[i] = data[i+1];
+      }
+      betterData = data;
+    }
+    return result;
+  }
+
+  public boolean remove(String element) {
+    if (contains(element)) {
+      remove(indexOf(element));
+      return true;
+    }
+    return (contains(element));
+  }
 
 }
