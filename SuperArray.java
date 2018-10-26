@@ -19,6 +19,8 @@ public SuperArray() {
   }
 
   public boolean add(String element) {
+    if (data.length <= size)
+    resize();
     data[size] = element;
     size++;
     return true;
@@ -72,4 +74,22 @@ public SuperArray() {
   }
   //-----------------------------------------------------
   //PHASE 1 COMPLETE.
+  //PHASE 2 START.
+
+  private void resize() {
+    String[] betterData = new String[ (size * 2) + 1];
+    for (int i = 0; i < size; i++) {
+    betterData[i] = data[i];
+  }
+  data = betterData;
+  }
+
+
+
+
+
+
+
+
+
 }
