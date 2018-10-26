@@ -7,7 +7,7 @@ public SuperArray() {
 }
 
   public void clear() {
-    return size;
+    size = 0;
   }
 
   public int size() {
@@ -15,12 +15,10 @@ public SuperArray() {
   }
 
   public boolean isEmpty() {
-    size = 0;
+    return (size == 0);
   }
 
   public boolean add(String element) {
-    if (data.length <= size)
-    resize();
     data[size] = element;
     size++;
     return true;
@@ -36,6 +34,20 @@ public SuperArray() {
     }
     return result + "]";
   }
+
+  public String toStringDebug() {
+    String result = "[";
+    for (int i = 0; i < size; i++) {
+      if (i == 0 || i == size) {
+        result += data[i];
+      }
+      else {
+        result += ", " + data[i];
+      }
+      }
+    result += "]";
+    return result;
+    }
 
   public String get(int index) {
     if (index < 0 || index >= size()) {
@@ -58,4 +70,6 @@ public SuperArray() {
     }
     return result;
   }
+  //-----------------------------------------------------
+  //PHASE 1 COMPLETE.
 }
