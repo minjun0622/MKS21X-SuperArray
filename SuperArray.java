@@ -6,6 +6,15 @@ public SuperArray() {
   data = new String[10];
 }
 
+public SuperArray(int startingCapacity) {
+  if (size < 0) {
+    throw new IllegalArgumentException(int startingCapacity + "unable to be negative.")
+  }
+else
+data = new String[startingCapacity]
+
+}
+
   public void clear() {
     size = 0;
   }
@@ -18,7 +27,7 @@ public SuperArray() {
     return (size == 0);
   }
 
-  public boolean add(String element) {
+  public boolean add(int index, String element) {
     if (data.length <= size)
     resize();
     data[size] = element;
@@ -53,18 +62,18 @@ public SuperArray() {
 
   public String get(int index) {
     if (index < 0 || index >= size()) {
-      return null;
+      return IndexOutOfBoundsException;
     }
     else
     {
-      return data[index];
+      return index;
     }
   }
 
   public String set(int index, String element) {
     String result = "";
     if (index < 0 || index >= size()) {
-      return null;
+      return IndexOutOfBoundsException ;
     }
     else {
       result = data[index];
@@ -148,7 +157,7 @@ public SuperArray() {
     return result;
   }
 
-  public boolean remove(String element) {
+  public boolean remove(int index) {
     if (contains(element)) {
       remove(indexOf(element));
       return true;
