@@ -8,11 +8,10 @@ public SuperArray() {
 
 public SuperArray(int startingCapacity) {
   if (size < 0) {
-    throw new IllegalArgumentException(int startingCapacity + "unable to be negative.")
+    throw new IllegalArgumentException(int startingCapacity + "unable to be negative.");
   }
 else
 data = new String[startingCapacity]
-
 }
 
   public void clear() {
@@ -62,18 +61,18 @@ data = new String[startingCapacity]
 
   public String get(int index) {
     if (index < 0 || index >= size()) {
-      return IndexOutOfBoundsException;
+      return IndexOutOfBoundsException(index + "out of bounds.");
     }
     else
     {
-      return index;
+      return data[index];
     }
   }
 
   public String set(int index, String element) {
     String result = "";
     if (index < 0 || index >= size()) {
-      return IndexOutOfBoundsException ;
+      return IndexOutOfBoundsException(index + "out of bounds.");
     }
     else {
       result = data[index];
@@ -121,7 +120,7 @@ data = new String[startingCapacity]
   }
   public void add(int index, String element) {
     if (index < 0 || index > size())
-    System.out.println("out of bound.");
+    throw new IndexOutOfBoundsException(index + "out of bounds.");
     else {
       if (data.length <= size)
       resize();
@@ -141,9 +140,7 @@ data = new String[startingCapacity]
   public String remove(int index) {
     String result = data[index];
     if (index < 0 || index > size())
-    System.out.println("out of bound.");
-    else
-    {
+    throw new IndexOutOfBoundsException(index + "out of bounds.");
       String[] betterData = new String[data.length];
       for (int i = 0; i < index; i++) {
         betterData[i] = data[i];
