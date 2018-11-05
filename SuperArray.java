@@ -93,11 +93,12 @@ public SuperArray (int startingCapacity) {
 
   public boolean contains(String target) {
     for (int i = 0; i < size; i++) {
-      if (data[i].equals(target))
+      if (data[i].equals(target)) {
       return true;
     }
-    return false;
   }
+    return false;
+}
 
   public int indexOf(String target) {
     for (int i = 0; i < size; i++) {
@@ -119,38 +120,37 @@ public SuperArray (int startingCapacity) {
     throw new IndexOutOfBoundsException();
   }
     else {
-      if (data.length <= size) {
+      if (data.length == size) {
       resize();
     }
       String[] betterData = new String[data.length];
-      for (int i = 0; i < index; i++) {
+      for (int i = 0; i < size; i++) {
         betterData[i] = data[i];
       }
-      for (int i = index; i < size + 1; i++) {
+      for (int i = index; i < size; i++) {
         betterData[i + 1] = data[i];
       }
       betterData[index] = element;
       size++;
-      betterData = data;
+      data = betterData;
     }
   }
 
   public String remove(int index) {
     String result = data[index];
     if (index < 0 || index > size())
-    System.out.println("out of bound.");
-    else
     {
+      throw new IndexOutOfBoundsException();
+  }
       String[] betterData = new String[data.length];
-      for (int i = 0; i < index; i++) {
+      for (int i = 0; i < size(); i++) {
         betterData[i] = data[i];
       }
-      size--;
-      for (int i = index; i < size; i++) {
-        betterData[i] = data[i+1];
+      for (int i = index; i < size() - 1; i++) {
+        betterData[i] = betterData[i + 1];
       }
-      betterData = data;
-    }
+      size--;
+      data = betterData;
     return result;
   }
 
